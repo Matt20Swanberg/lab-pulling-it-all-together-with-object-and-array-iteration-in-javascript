@@ -273,3 +273,87 @@ function bigShoeRebounds() {
     // Return number of rebounds for the player with the biggest shoe size
     return rebounds;
 }
+
+// This function returns the name of the player with the highest scored points
+function mostPointsScored() {
+    const game = gameObject();
+    let mostScored = 0;
+    let highestScorer = "";
+
+    // Loop through each team (home and away)
+    for (const teamKey in game) {
+        const team = game[teamKey];
+        const players = team.players;
+
+        // Loop through all players on that team
+        for (const playerName in players) {
+            const player = players[playerName];
+
+            // Update highest scorer if points are greater
+            if (player.points > mostScored) {
+                mostScored = player.points;
+                highestScorer = playerName;
+            }
+        }
+    }
+    // Return name of player with the most scored points
+    return highestScorer;
+}
+
+// This function identifies which team has the most total points
+function winningTeam() {
+    const game = gameObject();
+    let homePoints = 0;
+    let awayPoints = 0;
+
+    // Loop through each team (home and away)
+    for (const teamKey in game) {
+        if (typeof game[teamKey] === "object") {
+
+            const team = game[teamKey];
+            const players = team.players;
+            let teamTotal = 0;
+
+            // Add up points for all players on the team
+            for (const playerName in players) {
+                teamTotal += players[playerName].points;
+            }
+
+            // Assign totals to the correct team
+            if (teamKey == "home") {
+                homePoints = teamTotal;
+            }
+            else if (teamKey == "away") {
+                awayPoints = teamPoints;
+            }
+        }
+    }
+
+    // Compare team totals and return which is higher
+    if (homePoints > awayPoints) {
+        return game.home.teamName
+    } else {
+        return game.away.teamName
+    }
+}
+
+// This function identifies the player with the longest Name
+function playerWithLongestName() {
+    const game = gameObject();
+    let longestPlayerName = "";
+
+    // Loop through both teams
+    for (const teamKey in game) {
+        const team = game[teamKey];
+        const players = team.players;
+
+        // Check each player name
+        for (const playerName in players) {
+            // Update if this name is longer than the current longest
+            if (playerName.length > longestPlayerName.length) {
+                longestPlayerName = playerName;
+            }
+        }
+    }
+    return longestPlayerName;
+}
