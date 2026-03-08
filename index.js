@@ -246,9 +246,6 @@ function playerStats(playerName) {
 }
 
 // This function returns the number of rebounds for the player with the largest shoe size.
-// Steps:
-// Identify the player with the largest shoe size.
-// Return that player’s rebounds.
 function bigShoeRebounds() {
     const game = gameObject();
     let largestShoe = 0;
@@ -324,7 +321,7 @@ function winningTeam() {
                 homePoints = teamTotal;
             }
             else if (teamKey == "away") {
-                awayPoints = teamPoints;
+                awayPoints = teamTotal;
             }
         }
     }
