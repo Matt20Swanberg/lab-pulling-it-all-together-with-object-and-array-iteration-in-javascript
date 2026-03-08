@@ -1,3 +1,5 @@
+const { expect } = require("chai");
+
 describe('Basketball Stats', function () {
   
   describe('numPointsScored', function () {
@@ -66,3 +68,32 @@ describe('Basketball Stats', function () {
     });
   });
 });
+
+// Added these bonus sections that were not specified to include as per the lab requirements
+describe('Bonus', function () {
+  describe('mostPointsScored', function () {
+    it('should return the name of the player with the highest scored points', () => {
+      expect(mostPointsScored()).to.equal("Ben Gordon")
+    })
+  })
+
+  describe('winningTeam', function () {
+    it('should return the team with the most total points', () => {
+      expect(winningTeam()).to.equal("Brooklyn Nets")
+    })
+  })
+
+  describe('playerWithLongestName', function () {
+    it('should return the player with the longest Name', () => {
+      expect(playerWithLongestName()).to.equal("Bismack Biyombo")
+    })
+  })
+})
+
+describe('Super Bonus', function () {
+  describe('doesLongNameStealATon', function () {
+    it('should return boolean value if the player with the longest name has the most steals', () => {
+      expect(doesLongNameStealATon()).to.equal(false)
+    })
+  })
+})
