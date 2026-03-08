@@ -357,3 +357,34 @@ function playerWithLongestName() {
     }
     return longestPlayerName;
 }
+
+// This function returns [true] if the player with the longest name has the most steals
+function doesLongNameStealATon() {
+    const game = gameObject();
+    let longestPlayerName = "";
+
+    let mostSteals = 0;
+    let longestNameSteals = 0;
+
+    // Loop through all teams and players
+    for (const teamKey in game) {
+        const team = game[teamKey];
+        const players = team.players;
+
+        for (const playerName in players) {
+            const player = players[playerName];
+
+            // Track the highest steals in the game
+            if (player.steals > mostSteals) {
+                mostSteals = player.steals;
+            }
+
+            // If this player has the longest name, track their steals
+            if (playerName === longestPlayerName) {
+                longestNameSteals = player.steals;
+            }
+        }
+    }
+    // Return true if they match
+    return longestNameSteals === mostSteals;
+}
